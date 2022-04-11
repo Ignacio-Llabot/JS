@@ -7,7 +7,145 @@
     <link rel="stylesheet" href="./css/bootstrap.css">
     <title>Javascript</title>
 </head>
-<body>
-    <h1></h1>
+<body class="bg-secondary">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container">
+            <a
+            href="#"
+            class="navbar-brand mb-0 h1">
+                <img 
+                class="d-inline-block align-top"
+                src="./imgs/books.svg" width="30" height="30">
+                Navbar
+            </a>
+            <button
+            type="button"
+            class="navbar-toggler"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Expandir/contraer navegación">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+            class="navbar-collapse collapse text-center"
+            id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item active">
+                        <a href="#" class="nav-link">
+                            Inicio
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="#" class="nav-link">
+                            Alumnos
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="#" class="nav-link">
+                            Notas
+                        </a>
+                    </li>
+                    <li class="nav-item active ms-4">
+                        <form class="d-flex">
+                            <input type="text" class="form-control me-2">
+                            <button type="submit" class="btn btn-outline-success">Buscar</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <h1 class="text-center my-5">Panel de control</h1>
+    <div class="container-xlg row m-0 gap-3">
+        <aside class="container col-md-3">
+            <div>
+                <h2 class="text-center">Clases</h2>
+                <div class="list-group">
+                    <button type="button" class="list-group-item list-group-item-action">Lengua</button>
+                    <button type="button" class="list-group-item list-group-item-action">Matematica</button>
+                    <button type="button" class="list-group-item list-group-item-action">Geografia</button>
+                    <button type="button" class="list-group-item list-group-item-action">Historia</button>
+                    <button type="button" class="list-group-item list-group-item-action">Arte</button>
+                  </div>
+            </div>
+        </aside>
+        <main class="container col-md-8">
+            <div>
+                <h2 class="text-center">Clase #</h2>
+                <div class="bg-light">
+                    <h3 class="p-3 display-6">Tareas/Pruebas</h3>
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                              Tarea #1
+                            </button>
+                          </h2>
+                          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                              <strong>Consigna</strong>
+                              <p>Aca iria una lista con los nombres y las notas de los alumnos en esta tarea</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                              Tarea #2
+                            </button>
+                          </h2>
+                          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <strong>Consigna</strong>
+                                <p>Aca iria una lista con los nombres y las notas de los alumnos en esta tarea</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                              Tarea #3
+                            </button>
+                          </h2>
+                          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <strong>Consigna</strong>
+                                <p>Aca iria una lista con los nombres y las notas de los alumnos en esta tarea</p>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="./js/bootstrap.bundle.js"></script>
 </body>
 </html>
