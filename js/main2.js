@@ -44,5 +44,19 @@ for (let i = 0; i < cantidadAlumnos ; i++) {
 	alert('Alumno cargado!')
 }
 alert('Se ha finalizado la carga')
-buscar()
+
+const editarHTML = () => {
+	for(let i = 0; i <= listaAlumnos.length; i++) {
+		console.log(i)
+		let div = document.createElement('div')
+		div.innerHTML = `
+		<h2 style="margin-left:30px">${listaAlumnos[i].nombre}</h2>
+		<p style="margin-left:30px">Las notas del alumno son: ${listaAlumnos[i].notas}</p>
+		<p style="margin-left:30px">El promedio del alumno es: ${listaAlumnos[i].promedio}</p>
+		`
+		document.body.append(div)
+	}
+}
+
+
 
