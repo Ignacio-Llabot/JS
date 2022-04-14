@@ -61,75 +61,29 @@
     <div class="container-xlg row m-0 gap-3">
         <aside class="container col-md-3">
             <div>
-                <h2 class="text-center">Clases</h2>
-                <div class="list-group">
-                    <button type="button" class="list-group-item list-group-item-action">Lengua</button>
-                    <button type="button" class="list-group-item list-group-item-action">Matematica</button>
-                    <button type="button" class="list-group-item list-group-item-action">Geografia</button>
-                    <button type="button" class="list-group-item list-group-item-action">Historia</button>
-                    <button type="button" class="list-group-item list-group-item-action">Arte</button>
-                  </div>
+                <h2 class="text-center">Clases    <button class="btn btn-primary" onclick="addClaseHTML()">Nueva</button></h2>
+                <div class="list-group" id="clasesDiv">
+                </div>
             </div>
         </aside>
         <main class="container col-md-8">
-            <div>
-                <h2 class="text-center">Clase #</h2>
+            <div id="TPdiv">
+                <h2 class="text-center">Tareas/Pruebas</h2>
+                  <div class="d-flex mb-3 justify-content-center gap-3">
+                    <button class="btn btn-primary" onclick="nuevaTarea()">Nueva Tarea</button>
+                    <button class="btn btn-primary" onclick="nuevaPrueba()">Nueva Prueba</button>
+                  </div>
                 <div class="bg-light">
-                    <h3 class="p-3 display-6">Tareas/Pruebas</h3>
-                    <div class="accordion" id="accordionExample">
-                        <div class="accordion-item">
-                          <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                              Tarea #1
-                            </button>
-                          </h2>
-                          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                              <strong>Consigna</strong>
-                              <p>Aca iria una lista con los nombres y las notas de los alumnos en esta tarea</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="accordion-item">
-                          <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                              Tarea #2
-                            </button>
-                          </h2>
-                          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <strong>Consigna</strong>
-                                <p>Aca iria una lista con los nombres y las notas de los alumnos en esta tarea</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="accordion-item">
-                          <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                              Tarea #3
-                            </button>
-                          </h2>
-                          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <strong>Consigna</strong>
-                                <p>Aca iria una lista con los nombres y las notas de los alumnos en esta tarea</p>
-                            </div>
-                          </div>
-                        </div>
+                    <h3 class="p-3 display-6" id="tituloClase">Clase #</h3>
+                    <div class="accordion" id="accordionMain">
+
                     </div>
+
                 </div>
             </div>
         </main>
     </div>
-    
-    <button onclick="editarHTML()" 
-    style="
-      width: 150px;
-      height: 100px;
-      margin-left: 30px;
-      font-size: larger;
-      "> Mostrar alumnos
-    </button>
+
 
     
 
@@ -150,7 +104,7 @@
 
 
 
-    <script src="./js/main2.js"></script>
+    <script src="./js/main4.js"></script>
     <script src="./js/bootstrap.bundle.js"></script>
 </body>
 </html>
