@@ -16,8 +16,8 @@ class Alumno {  // creador de alumnos
 class Clase {  // creador de alumnos
     constructor(materia) {
         this.materia = materia
-        this.tareas = []
-        this.pruebas = []
+        this.tareas = 0
+        this.pruebas = 0
         this.promedios = []
     }
 }
@@ -45,7 +45,7 @@ const nuevaTarea = () => {
         alert('seleccione una clase valida')
         return
     }
-    cl.tareas.push(`Tarea ${cl.tareas.length + 1}`)
+    cl.tareas++
     showTPHTML(cl.materia)
 }
 
@@ -55,7 +55,7 @@ const nuevaPrueba = () => {
         alert('seleccione una clase valida')
         return
     }
-    cl.pruebas.push(`Prueba ${cl.pruebas.length + 1}`)
+    cl.pruebas++
     showTPHTML(cl.materia)
 }
 
@@ -80,12 +80,12 @@ const showTPHTML = (mat) => {
     const boton = document.getElementById(`boton${mat}`)
     document.getElementById('tituloClase').innerHTML = boton.innerHTML
 
-    const arrayT = reachClase(mat).tareas
-    const arrayP = reachClase(mat).pruebas
+    const countT = reachClase(mat).tareas
+    const countP = reachClase(mat).pruebas
     const mainDiv = document.getElementById('accordionMain')
     mainDiv.innerHTML = ''
 
-    for (let i = 0; i < arrayT.length; i++) {
+    for (let i = 0; i < countT; i++) {
         const div = document.createElement('div')
         div.classList.add("accordion-item")
         div.innerHTML = `
@@ -107,7 +107,7 @@ const showTPHTML = (mat) => {
         mainDiv.appendChild(div)
     }
 
-    for (let i = 0; i < arrayP.length; i++) {
+    for (let i = 0; i < countP; i++) {
         const div = document.createElement('div')
         div.classList.add("accordion-item")
         div.innerHTML = `
