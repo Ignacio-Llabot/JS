@@ -61,7 +61,7 @@
     <div class="container-xlg row m-0 gap-3">
         <aside class="container col-md-3">
             <div>
-                <h2 class="text-center">Clases    <button class="btn btn-primary" onclick="addClaseHTML()">Nueva</button></h2>
+                <h2 class="text-center">Clases    <button class="btn btn-primary" id="btnNuevaClase">Nueva</button></h2>
                 <div class="list-group" id="clasesDiv">
                 </div>
             </div>
@@ -70,14 +70,13 @@
             <div id="TPdiv">
                 <h2 class="text-center">Tareas/Pruebas</h2>
                   <div class="d-flex mb-3 justify-content-center gap-3">
-                    <button class="btn btn-primary" onclick="nuevaTarea()">Nueva Tarea</button>
-                    <button class="btn btn-primary" onclick="nuevaPrueba()">Nueva Prueba</button>
+                    <button class="btn btn-primary" id="btnNuevaT">Nueva Tarea</button>
+                    <button class="btn btn-primary" id="btnNuevaP">Nueva Prueba</button>
                   </div>
                 <div class="bg-light">
                     <h3 class="p-3 display-6" id="tituloClase">Clase #</h3>
                     <div class="accordion" id="accordionMain">
-
-                    </div>
+                </div>
 
                 </div>
             </div>
@@ -107,4 +106,6 @@
     <script src="./js/main4.js"></script>
     <script src="./js/bootstrap.bundle.js"></script>
 </body>
+
 </html>
+

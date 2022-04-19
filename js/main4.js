@@ -130,3 +130,10 @@ const showTPHTML = (mat) => {
     }
 }
 
+const btnNuevaClase = document.getElementById('btnNuevaClase')
+const btnNuevaT = document.getElementById('btnNuevaT')
+const btnNuevaP = document.getElementById('btnNuevaP')
+
+btnNuevaClase.addEventListener('click', addClaseHTML)
+btnNuevaT.addEventListener('click', nuevaTarea)
+btnNuevaP.addEventListener('click', nuevaPrueba)
