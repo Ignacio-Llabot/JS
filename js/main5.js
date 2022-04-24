@@ -1,17 +1,9 @@
 'use strict';
 
-const listaClases = []
-const listaAlumnos = []
-const listaPromedios = []
+const getListaClases = () => {return JSON.parse(localStorage.getItem('listaClasesJSON'))}
+const updateListaClases = () => {localStorage.setItem('listaClasesJSON', JSON.stringify(listaClases))}
+const listaClases = getListaClases() || []
 
-class Alumno {  // creador de alumnos
-    constructor(nombre) {
-        this.nombre = nombre
-        this.tareas = []
-        this.pruebas = []
-        this.promedios = []
-    }
-}
 
 class Clase {  // creador de alumnos
     constructor(materia) {
@@ -25,11 +17,20 @@ class Clase {  // creador de alumnos
 const addMateria = (materia) => {
     const cl = new Clase (materia)
     listaClases.push(cl)
+    updateListaClases()
 }
 
-const reachAlumno = (alumno) => {
-    const al = listaAlumnos[listaAlumnos.indexOf(listaAlumnos.find(el => el.nombre == alumno))]
-    return al
+const addClaseHTML = () => {
+    const materia = prompt('que materia desea agregar?')
+    if (materia == '' || materia == null) {return};
+    addMateria(materia)
+    const contenedor = document.getElementById('clasesDiv')
+    const boton = document.createElement('button')
+    boton.classList.add('list-group-item', 'list-group-item-action')
+    boton.setAttribute('id', `boton${materia}`)
+    boton.innerHTML = materia
+    boton.setAttribute("onclick",`showTPHTML('${materia}')`);
+    contenedor.append(boton)
 }
 
 const reachClase = (materia) => {
@@ -45,6 +46,7 @@ const nuevaTarea = () => {
     }
     cl.tareas++
     showTPHTML(cl.materia)
+    updateListaClases()
 }
 
 const nuevaPrueba = () => {
@@ -55,22 +57,8 @@ const nuevaPrueba = () => {
     }
     cl.pruebas++
     showTPHTML(cl.materia)
+    updateListaClases()
 }
-
-
-const addClaseHTML = () => {
-    const materia = prompt('que materia desea agregar?')
-    if (materia == '' || materia == null) {return};
-    addMateria(materia)
-    const contenedor = document.getElementById('clasesDiv')
-    const boton = document.createElement('button')
-    boton.classList.add('list-group-item', 'list-group-item-action')
-    boton.setAttribute('id', `boton${materia}`)
-    boton.innerHTML = materia
-    boton.setAttribute("onclick",`showTPHTML('${materia}')`);
-    contenedor.append(boton)
-}
-
 
 const showTPHTML = (mat) => {
     const boton = document.getElementById(`boton${mat}`)
@@ -94,8 +82,8 @@ const showTPHTML = (mat) => {
 
         <div id="collapse${i+1}" class="accordion-collapse collapse" aria-labelledby="heading${i+1}" data-bs-parent="#accordionMain">
             <div class="accordion-body">
-          <strong>Consigna</strong>
-          <p>Aca iria una lista con los nombres y las notas de los alumnos</p>
+          <strong>Notas</strong>
+          <p>Aca irian las notas de los alumnos</p>
             </div>
         </div>
         `
@@ -116,8 +104,8 @@ const showTPHTML = (mat) => {
 
         <div id="collapseP${i+1}" class="accordion-collapse collapse" aria-labelledby="headingP${i+1}" data-bs-parent="#accordionMain">
             <div class="accordion-body">
-          <strong>Consigna</strong>
-          <p>Aca iria una lista con los nombres y las notas de los alumnos</p>
+          <strong>Notas</strong>
+          <p>Aca irian las notas de los alumnos</p>
             </div>
         </div>
         `
@@ -126,6 +114,31 @@ const showTPHTML = (mat) => {
     }
 }
 
+
+
+const loadClases = () => {
+    if(getListaClases() == null) {return}
+    listaClases.forEach(e => {
+        const contenedor = document.getElementById('clasesDiv')
+        const boton = document.createElement('button')
+        boton.classList.add('list-group-item', 'list-group-item-action')
+        boton.setAttribute('id', `boton${e.materia}`)
+        boton.innerHTML = e.materia
+        boton.setAttribute("onclick",`showTPHTML('${e.materia}')`);
+        contenedor.append(boton)
+    })
+}
+
+loadClases()
+
+
+
+
+
+
+
+
+
 const btnNuevaClase = document.getElementById('btnNuevaClase')
 const btnNuevaT = document.getElementById('btnNuevaT')
 const btnNuevaP = document.getElementById('btnNuevaP')
@@ -133,3 +146,4 @@ const btnNuevaP = document.getElementById('btnNuevaP')
 btnNuevaClase.addEventListener('click', addClaseHTML)
 btnNuevaT.addEventListener('click', nuevaTarea)
 btnNuevaP.addEventListener('click', nuevaPrueba)
+
