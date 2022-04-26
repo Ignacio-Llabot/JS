@@ -20,9 +20,28 @@ const addMateria = (materia) => {
     updateListaClases()
 }
 
+const deleteMateria = () => {
+    const cl = reachClase(document.getElementById('tituloClase').innerHTML)
+    const clIndex = listaClases.indexOf(listaClases.find(el => el.materia == cl.materia))
+    const mainDiv = document.getElementById('accordionMain')
+    const clBtn = document.getElementById(`boton${cl.materia}`)
+    const titulo = document.getElementById('tituloClase')
+    if(document.getElementById('tituloClase').innerHTML == 'Clase #'){
+        alert('seleccione una clase valida')
+        return
+    }
+    clBtn.remove()
+    listaClases.splice(clIndex, 1)
+    mainDiv.innerHTML = ''
+    titulo.innerHTML = 'Clase #'
+    updateListaClases()
+} 
+
 const addClaseHTML = () => {
-    const materia = prompt('que materia desea agregar?')
-    if (materia == '' || materia == null) {return};
+    const btn = document.getElementById('claseInput')
+    const materia = btn.value
+    if (materia == '' || materia == null || materia == ' ') {return};
+    btn.value = null
     addMateria(materia)
     const contenedor = document.getElementById('clasesDiv')
     const boton = document.createElement('button')
@@ -142,8 +161,10 @@ loadClases()
 const btnNuevaClase = document.getElementById('btnNuevaClase')
 const btnNuevaT = document.getElementById('btnNuevaT')
 const btnNuevaP = document.getElementById('btnNuevaP')
+const btnDelete = document.getElementById('btnDelete')
 
 btnNuevaClase.addEventListener('click', addClaseHTML)
 btnNuevaT.addEventListener('click', nuevaTarea)
 btnNuevaP.addEventListener('click', nuevaPrueba)
+btnDelete.addEventListener('click', deleteMateria)
 
