@@ -4,6 +4,9 @@ const getListaClases = () => {return JSON.parse(localStorage.getItem('listaClase
 const updateListaClases = () => {localStorage.setItem('listaClasesJSON', JSON.stringify(listaClases))}
 const listaClases = getListaClases() || []
 
+const getListaAlumnos = () => {return JSON.parse(localStorage.getItem('listaAlumnosJSON'))}
+const updateListaAlumnos = () => {localStorage.setItem('listaAlumnosJSON', JSON.stringify(listaAlumnos))}
+const listaAlumnos = getListaAlumnos() || []
 
 class Clase {  // creador de alumnos
     constructor(materia) {
@@ -14,10 +17,39 @@ class Clase {  // creador de alumnos
     }
 }
 
+class Alumno {
+    constructor(nombre) {
+        this.nombre = nombre
+        this.notasT = []
+        this.notasP = []
+    } 
+}
+
+class NotaT {
+    constructor(mat, n, nota) {
+        this.materia = mat
+        this.numero = n
+        this.nota = nota
+    }
+}
+
 const addMateria = (materia) => {
     const cl = new Clase (materia)
     listaClases.push(cl)
     updateListaClases()
+}
+
+const addAlumno = (nom) => {
+    const al = new Alumno(nom)
+    listaAlumnos.push(al)
+    updateListaAlumnos()
+}
+
+const addNotaT = (al, mat, n, nota) => {
+    const nt = new NotaT(mat, n, nota)
+    const alumno = reachAlumno(al)
+    alumno.notasT.push(nt)
+    updateListaAlumnos()
 }
 
 const deleteMateria = () => {
@@ -57,6 +89,11 @@ const reachClase = (materia) => {
     return cl
 }
 
+const reachAlumno = (nombre) => {
+    const alumno = listaAlumnos[listaAlumnos.indexOf(listaAlumnos.find(el => el.nombre == nombre))]
+    return alumno
+}
+
 const nuevaTarea = () => {
     const cl = reachClase(document.getElementById('tituloClase').innerHTML)
     if(document.getElementById('tituloClase').innerHTML == 'Clase #'){
@@ -79,6 +116,31 @@ const nuevaPrueba = () => {
     updateListaClases()
 }
 
+const showNombresHTML = () => {
+    const cantidadT = document.getElementsByClassName("ulNombresT").length
+    const cantidadP = document.getElementsByClassName("ulNombresP").length
+    for (let i = 1; i <= cantidadT; i++) {
+        listaAlumnos.forEach(e => {
+            const li = document.createElement('li')
+            const ul = document.getElementById(`ulT${i}`)
+            li.setAttribute('style', 'list-style: none;')
+            li.setAttribute('class', 'liNombres')
+            li.innerHTML = e.nombre
+            ul.append(li)
+        })
+    }
+    for (let i = 1; i <= cantidadP; i++) {
+        listaAlumnos.forEach(e => {
+            const li = document.createElement('li')
+            const ul = document.getElementById(`ulP${i}`)
+            li.setAttribute('style', 'list-style: none;')
+            li.setAttribute('class', 'liNombres')
+            li.innerHTML = e.nombre
+            ul.append(li)
+        })
+    }
+}
+
 const showTPHTML = (mat) => {
     const boton = document.getElementById(`boton${mat}`)
     document.getElementById('tituloClase').innerHTML = boton.innerHTML
@@ -92,17 +154,20 @@ const showTPHTML = (mat) => {
         const div = document.createElement('div')
         div.classList.add("accordion-item")
         div.innerHTML = `
-        <h2 class="accordion-header" id="heading${i+1}">
+        <h2 class="accordion-header" id="headingT${i+1}">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${i+1}" aria-expanded="false" aria-controls="collapse${i+1}">
              Tarea #${i+1}
             </button>
         </h2>
 
 
-        <div id="collapse${i+1}" class="accordion-collapse collapse" aria-labelledby="heading${i+1}" data-bs-parent="#accordionMain">
-            <div class="accordion-body">
-          <strong>Notas</strong>
-          <p>Aca irian las notas de los alumnos</p>
+        <div id="collapse${i+1}" class="accordion-collapse collapse" aria-labelledby="headingT${i+1}" data-bs-parent="#accordionMain">
+            <div class="accordion-body container">
+                <strong>Notas</strong>
+                <div class="row">
+                    <ul class="ulNombresT col-2" id="ulT${i+1}">
+                    </ul>
+                </div>
             </div>
         </div>
         `
@@ -122,15 +187,19 @@ const showTPHTML = (mat) => {
 
 
         <div id="collapseP${i+1}" class="accordion-collapse collapse" aria-labelledby="headingP${i+1}" data-bs-parent="#accordionMain">
-            <div class="accordion-body">
-          <strong>Notas</strong>
-          <p>Aca irian las notas de los alumnos</p>
+            <div class="accordion-body container">
+                <strong>Notas</strong>
+                <div class="row">
+                    <ul class="ulNombresT col-2" id="ulT${i+1}">
+                    </ul>
+                </div>
             </div>
         </div>
         `
         
         mainDiv.appendChild(div)
     }
+    showNombresHTML()
 }
 
 
@@ -149,7 +218,6 @@ const loadClases = () => {
 }
 
 loadClases()
-
 
 
 

@@ -18,4 +18,12 @@
       -ms-flex-align: center;
           align-items: center;
 }
+
+.liNombres {
+  display: block;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0;
+}
 /*# sourceMappingURL=main.css.map */
