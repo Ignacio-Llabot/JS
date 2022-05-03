@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">   
+    <title>Document</title>
     <link rel="stylesheet" href="./css/main.css">
-    <title>Javascript</title>
+
 </head>
 <body class="bg-secondary">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -71,14 +72,25 @@
                             <button id="btnDelete" type="button" class="btn btn-danger">Eliminar clase</button>
                         </div>
                         <div class="d-flex justify-content-around my-3">
-                            <input id="claseInput" type="text" class="form-control">
-                            <button class="btn btn-primary" id="btnNuevaClase">Nueva</button>
+                            <input id="claseInput" type="text" class="form-control" placeholder="Ingrese el nombre de la materia">
+                            <button class="btn btn-primary" id="btnNuevaClase">Agregar</button>
                         </div>
                         <div class="list-group" id="clasesDiv">
                         </div>
                     </div>
                 </aside>
                 <main class="container col-md-8">
+                  <h2 class="text-center">Agregar nuevo alumno</h2>
+                  <div class="d-flex justify-content-around my-3">
+                    <input id="alumnoInput" type="text" class="form-control" placeholder="ingrese el nombre del alumno">
+                    <button class="btn btn-primary" id="btnNuevoAlumno">Agregar</button>
+                  </div>
+
+                  <h2 class="text-center">Eliminar un Alumno</h2>
+                  <div class="d-flex justify-content-around my-3">
+                    <input id="alumnoInputDelete" type="text" class="form-control" placeholder="ingrese el nombre del alumno a eliminar">
+                    <button class="btn btn-danger" id="btnDeleteAlumno">Eliminar</button>
+                  </div>
                     <div id="TPdiv">
                         <h2 class="text-center">Tareas/Pruebas</h2>
                           <div class="d-flex mb-3 justify-content-center gap-3">
@@ -87,38 +99,81 @@
                           </div>
                         <div class="bg-light">
                             <h3 class="p-3 display-6" id="tituloClase">Clase #</h3>
-                            <div class="accordion" id="accordionMain">
-                        </div>
-        
+
+                          <div class="accordion" id="accordionMain">
+
+
+                            <div class="accordion-item">
+                              <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                  item n1
+                                </button>
+                              </h2>
+                              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionMain">
+                                <div class="accordion-body container-flex">
+
+                                  <div class="row">
+                                    <p class="col-6">Alumno 1</p>
+                                    <p class="col-6">Nota 1</p>
+                                  </div>
+
+                                  <div class="row">
+                                    <p class="col-6">Alumno 2</p>
+                                    <p class="col-6">Nota 2</p>
+                                  </div>
+
+                                  <div class="row">
+                                    <p class="col-6">Alumno 3</p>
+                                    <p class="col-6"><input type="text" class="form-control"></p>
+                                  </div>
+
+                                  <div class="row">
+                                    <p class="col-6">Alumno 4</p>
+                                    <p class="col-6">Nota 4</p>
+                                  </div>
+
+
+
+
+
+
+
+
+<!--                                   <ul class="col-5" style="list-style: none;">
+                                    <li>al 1</li>
+                                    <li>al 2</li>
+                                    <li>al 3</li>
+                                    <li>al 4</li>
+                                  </ul>
+
+                                  <ul class="col-7" style="list-style: none;">
+                                    <li>nota 1</li>
+                                    <li>nota 2</li>
+                                    <li><input type="text" class="form-control"></li>
+                                    <li>nota 4</li>
+                                  </ul> -->
+
+
+
+
+
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+
+
+
                         </div>
                     </div>
                 </main>
             </div>
         </div>
     </img>
-
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script src="./js/main5.js"></script>
-    <script src="./js/bootstrap.bundle.js"></script>
+    <script src="./main.js"></script>
+    <script src="./bootstrap.bundle.js"></script>
 </body>
 
 </html>
-
