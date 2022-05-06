@@ -20,7 +20,11 @@ class Clase {
 const addTarea = () => {
     const titulo = document.getElementById('tituloClase').innerText
     if (titulo === 'Clase #') {
-        alert('seleccione una clase valida')
+        swal({
+            title: "Error",
+            text: "Seleccione una clase valida",
+            icon: "error",
+          });
         return
     }
     const materia = reachClase(titulo).materia
@@ -34,7 +38,11 @@ const addTarea = () => {
 const addPrueba = () => {
     const titulo = document.getElementById('tituloClase').innerText
     if (titulo === 'Clase #') {
-        alert('seleccione una clase valida')
+        swal({
+            title: "Error",
+            text: "Seleccione una clase valida",
+            icon: "error",
+          });
         return
     }
     const materia = reachClase(titulo).materia
@@ -99,7 +107,14 @@ const addAlumno = (al) => {
 const addClaseHTML = () => {
     const input = document.getElementById('claseInput')
     const materia = input.value
-    if (materia == '' || materia == null || materia == ' ') {return};
+    if (materia == '' || materia == null || materia == ' ') {
+        swal({
+            title: "Error",
+            text: "Ingrese un nombre valido",
+            icon: "error",
+          });
+        return
+    };
     input.value = null
     addClase(materia)
     const contenedor = document.getElementById('clasesDiv')
@@ -114,21 +129,32 @@ const addClaseHTML = () => {
 const addAlumnoHTML = () => {
     const input = document.getElementById('alumnoInput')
     const nombre = input.value
-    if (nombre == '' || nombre == null || nombre == ' ') {return};
+    if (nombre == '' || nombre == null || nombre == ' ') {
+        swal({
+            title: "Error",
+            text: "Ingrese un nombre valido",
+            icon: "error",
+          });
+        return
+    };
     input.value = null
     addAlumno(nombre)
 }
 
 const deleteMateria = () => {
+    if(document.getElementById('tituloClase').innerHTML == 'Clase #'){
+        swal({
+            title: "Error",
+            text: "Seleccione una clase valida",
+            icon: "error",
+          });
+        return
+    }
     const cl = reachClase(document.getElementById('tituloClase').innerHTML)
     const clIndex = listaClases.indexOf(listaClases.find(el => el.materia == cl.materia))
     const mainDiv = document.getElementById('accordionMain')
     const clBtn = document.getElementById(`boton${cl.materia}`)
     const titulo = document.getElementById('tituloClase')
-    if(document.getElementById('tituloClase').innerHTML == 'Clase #'){
-        alert('seleccione una clase valida')
-        return
-    }
     clBtn.remove()
     listaClases.splice(clIndex, 1)
     mainDiv.innerHTML = ''
@@ -153,6 +179,14 @@ const deleteMateria = () => {
 const deleteAlumno = () => {
     const input = document.getElementById('alumnoInputDelete')
     const nombre = input.value
+    if (nombre == '' || nombre == null || nombre == ' ') {
+        swal({
+            title: "Error",
+            text: "Ingrese un nombre valido",
+            icon: "error",
+          });
+        return
+    };
     input.value = null
     const indexal = listaAlumnos.indexOf(listaAlumnos.find(e => e.nombre == nombre))
     console.log(indexal)
@@ -283,8 +317,6 @@ const showHTML = (mat) => {
     
 }
 
-
-
 const btnNuevaClase = document.getElementById('btnNuevaClase')
 btnNuevaClase.addEventListener('click', addClaseHTML)
 
@@ -300,7 +332,7 @@ btnPrueba.addEventListener('click', addPrueba)
 const btnNuevoAlumno = document.getElementById('btnNuevoAlumno')
 btnNuevoAlumno.addEventListener('click', addAlumnoHTML)
 
-const btnDelteAlumno = document.getElementById('btnDeleteAlumno')
+const btnDeleteAlumno = document.getElementById('btnDeleteAlumno')
 btnDeleteAlumno.addEventListener('click', deleteAlumno)
 
 
